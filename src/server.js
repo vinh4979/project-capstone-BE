@@ -8,4 +8,5 @@ const port = 8080;
 app.use(cors());
 app.use(express.json());
 app.use(rootRouter);
+
 app.listen(port, () => console.log("run successfully"));
