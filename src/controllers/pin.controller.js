@@ -1,5 +1,5 @@
 import { Op } from "sequelize"
-import cloudinary from "../configs/cloundinary.js"
+import {cloudinary} from "../configs/cloundinary.js"
 import { decodeToken } from "../configs/jwt.js"
 import { responseData } from "../configs/response.js"
 import sequelize from "../models/connect.js"

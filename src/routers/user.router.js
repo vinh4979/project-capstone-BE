@@ -1,10 +1,13 @@
 import express from "express";
-import { deleteUser, getUser, updateUser } from "../controllers/user.controller.js";
+import { getUserDetail, getUserDetailByID, updateUserDetail } from "../controllers/user.controller.js";
+import multer from "multer";
+import { midelwareToken } from "../configs/jwt.js";
 
 const userRouter = express.Router();
+const upload = multer();
 
-userRouter.use("/get-user", getUser);
-userRouter.post("/update-user", updateUser);
-userRouter.delete("/delete-user", deleteUser);
+userRouter.get("/get-user-detail", midelwareToken, getUserDetail);
+userRouter.get("/get-user-detail-by-id/:user_id", midelwareToken, getUserDetailByID);
+userRouter.post("/update-user-detail", upload.single("image"), midelwareToken, updateUserDetail);
 
 export default userRouter;
