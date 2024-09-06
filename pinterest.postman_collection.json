@@ -1,0 +1,954 @@
+{
+	"info": {
+		"_postman_id": "fe56711f-9d80-4e41-b130-920af67c3cf5",
+		"name": "pinterest",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37456210"
+	},
+	"item": [
+		{
+			"name": "register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"buivinh@gmail.com\",\n    \"pass_word\": \"123\" ,\n    \"full_name\": \"buiquangvinh\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/register",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"register"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"vinh@gmail.com\",\n    \"pass_word\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "refresh Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAxNjA3MTg2fSwiaWF0IjoxNzI1NjAxNjA3LCJleHAiOjE3MjU2MDE2Mzd9.WYRj1DFIthBre0Fgnm_c2vZ4qv97RoSIoyfl4VImAZg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/refresh-token",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"refresh-token"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "update user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"full_name\": \"vinh\",\n    \"pass_word\": \"\",\n    \"avatar\": \"\",\n    \"email\": \"vinh@gmail.com\",\n    \"user_id\": 17\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/update-user",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"update-user"
+					]
+				},
+				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 14\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/delete-user",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"delete-user"
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "create pin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Nn0sImlhdCI6MTcyNTU2MTgxMiwiZXhwIjoxNzI2MTY2NjEyfQ.qtbQDI7MaFg4d7KxcZ0ac-PX9bIbOAy35vnhKdORuCo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/monnlight/Desktop/Screenshot 2024-09-01 at 22.25.13.png"
+						},
+						{
+							"key": "title",
+							"value": "flow Code express",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "how to code express",
+							"type": "text"
+						},
+						{
+							"key": "allow_comment",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "tag_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "link",
+							"value": "123.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/create-pin",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"create-pin"
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "update pin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Nn0sImlhdCI6MTcyNTU2MTgxMiwiZXhwIjoxNzI2MTY2NjEyfQ.qtbQDI7MaFg4d7KxcZ0ac-PX9bIbOAy35vnhKdORuCo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/monnlight/Downloads/test2.jpg"
+						},
+						{
+							"key": "pin_id",
+							"value": "14",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "education",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "how to code express",
+							"type": "text"
+						},
+						{
+							"key": "allow_comment",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "tag_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "link",
+							"value": "123.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/update-pin",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"update-pin"
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete pin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Nn0sImlhdCI6MTcyNTU2MTgxMiwiZXhwIjoxNzI2MTY2NjEyfQ.qtbQDI7MaFg4d7KxcZ0ac-PX9bIbOAy35vnhKdORuCo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pin_id\": 14\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/delete-pin",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"delete-pin"
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all pins",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAxNjA3MTg2fSwiaWF0IjoxNzI1NjAyMzc0LCJleHAiOjE3MjU2MDI0MDR9.trrDFf8ghx2jVuCWha5OsiURcOjZW3qy7gU28UFuCOw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/get-all-pin",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"get-all-pin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get pin by user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/get-pin-by-user",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"get-pin-by-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get pin by search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"search\": \"travel\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/get-pin-by-search",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"get-pin-by-search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save pin to board",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pin_id\": 4,\n    \"board_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/save-pin-to-board",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"save-pin-to-board"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save pin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pin_id\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/save-pin",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"save-pin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save pin to new board",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pin_id\": 4,\n    \"board_name\": \"learning code\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/save-pin-to-new-board",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"save-pin-to-new-board"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get pin save by user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pin_id\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/get-save-by-user",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"get-save-by-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unsave Pin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pin_id\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/unsave-pin",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"unsave-pin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Board",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"board_name\": \"learning english\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/create-board",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"create-board"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Board Name",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"board_id\": 4,\n    \"new_board_name\": \"how to improve programming skills\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/update-board-name",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"update-board-name"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"board_id\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/delete-board",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"delete-board"
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pin_id\": 2,\n    \"content\": \"comment this pin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/comment",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Comment",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cmt_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/delete-comment",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"delete-comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "like",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pin_id\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/like",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unlike",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6Niwia2V5IjoxNzI1NjAzMTY1MzI4fSwiaWF0IjoxNzI1NjAzMTY1LCJleHAiOjE3MjU2MDMxOTV9.gAduNE27rDcGJym6bPVfQzpdGEc91hdmWJfNpX21Ykg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"like_id\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/unlike",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"unlike"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}

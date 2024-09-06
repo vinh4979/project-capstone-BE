@@ -1,10 +1,10 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class comments extends Model {
+export default class code extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    cmt_id: {
+    code_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -18,33 +18,25 @@ export default class comments extends Model {
         key: 'user_id'
       }
     },
-    pin_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'pins',
-        key: 'pin_id'
-      }
+    reset_code: {
+      type: DataTypes.STRING(255),
+      allowNull: false
     },
-    cmt_date: {
-      type: DataTypes.DATEONLY,
-      allowNull: true
-    },
-    cmt: {
-      type: DataTypes.TEXT,
+    expires_at: {
+      type: DataTypes.DATE,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'comments',
-    timestamps: false,
+    tableName: 'code',
+    timestamps: true,
     indexes: [
       {
         name: "PRIMARY",
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "cmt_id" },
+          { name: "code_id" },
         ]
       },
       {
@@ -52,13 +44,6 @@ export default class comments extends Model {
         using: "BTREE",
         fields: [
           { name: "user_id" },
-        ]
-      },
-      {
-        name: "pin_id",
-        using: "BTREE",
-        fields: [
-          { name: "pin_id" },
         ]
       },
     ]

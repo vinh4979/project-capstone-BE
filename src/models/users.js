@@ -10,25 +10,38 @@ export default class users extends Model {
       allowNull: false,
       primaryKey: true
     },
-    email: {
+    full_name: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
     },
     pass_word: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
     },
-    full_name: {
+    email: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      unique: "email"
+    },
+    avatar: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    age: {
+    refresh_token: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    face_app_id: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    type_user: {
       type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    avata: {
-      type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'type_user',
+        key: 'type_user_id'
+      }
     }
   }, {
     sequelize,
@@ -41,6 +54,21 @@ export default class users extends Model {
         using: "BTREE",
         fields: [
           { name: "user_id" },
+        ]
+      },
+      {
+        name: "email",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "email" },
+        ]
+      },
+      {
+        name: "type_user",
+        using: "BTREE",
+        fields: [
+          { name: "type_user" },
         ]
       },
     ]

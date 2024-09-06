@@ -4,27 +4,35 @@ const { Model, Sequelize } = _sequelize;
 export default class saves extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    user_id: {
+    save_id: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
+      primaryKey: true
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
         model: 'users',
         key: 'user_id'
       }
     },
-    img_id: {
+    pin_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
+      allowNull: true,
       references: {
-        model: 'images',
-        key: 'img_id'
+        model: 'pins',
+        key: 'pin_id'
       }
     },
-    save_date: {
-      type: DataTypes.DATEONLY,
-      allowNull: true
+    board_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'boards',
+        key: 'board_id'
+      }
     }
   }, {
     sequelize,
@@ -36,15 +44,28 @@ export default class saves extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "user_id" },
-          { name: "img_id" },
+          { name: "save_id" },
         ]
       },
       {
-        name: "img_id",
+        name: "user_id",
         using: "BTREE",
         fields: [
-          { name: "img_id" },
+          { name: "user_id" },
+        ]
+      },
+      {
+        name: "pin_id",
+        using: "BTREE",
+        fields: [
+          { name: "pin_id" },
+        ]
+      },
+      {
+        name: "board_id",
+        using: "BTREE",
+        fields: [
+          { name: "board_id" },
         ]
       },
     ]

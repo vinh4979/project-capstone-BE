@@ -1,26 +1,35 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class images extends Model {
+export default class pins extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    img_id: {
+    pin_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    img_name: {
+    image: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    img_link: {
+    title: {
       type: DataTypes.STRING(255),
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.TEXT,
       allowNull: true
     },
-    full_desc: {
+    link: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
+    },
+    allowComment: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: 1
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -29,10 +38,18 @@ export default class images extends Model {
         model: 'users',
         key: 'user_id'
       }
+    },
+    tag_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'tag_pins',
+        key: 'tag_id'
+      }
     }
   }, {
     sequelize,
-    tableName: 'images',
+    tableName: 'pins',
     timestamps: false,
     indexes: [
       {
@@ -40,7 +57,7 @@ export default class images extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "img_id" },
+          { name: "pin_id" },
         ]
       },
       {
@@ -48,6 +65,13 @@ export default class images extends Model {
         using: "BTREE",
         fields: [
           { name: "user_id" },
+        ]
+      },
+      {
+        name: "tag_id",
+        using: "BTREE",
+        fields: [
+          { name: "tag_id" },
         ]
       },
     ]
